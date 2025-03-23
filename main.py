@@ -1,20 +1,39 @@
-#Constantes
+from const import*
+import random
+import pygame
+import pygame.freetype
+import sys
 
-global GREEN 
-GREEN = (16,250,54)
-global ORANGE
-ORANGE = (250,150,15)
-global RED 
-RED = (250,16,16)
-global BLUE 
-BLUE = (16,63,250)
-global YELLOW 
-YELLOW = (241,250,16)
-global WHITE 
-WHITE = (255,255,255)
+def new_edge():
+    colors,letters = random.choice(edges_list)
+    return colors, letters
 
-colors = [GREEN,ORANGE,RED,BLUE,YELLOW,WHITE]
+def display_colors(color1,color2):
+    rect1 = pygame.Rect(width//3,height//3,100,100)
+    pygame.draw.rect(screen, color1, rect1) 
 
-stickers = {
+    rect2 = pygame.Rect(2*width//3,height//3,100,100)
+    pygame.draw.rect(screen, color2, rect2) 
 
-}
+def get_events():
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE): 
+                get_quit_events()
+
+def get_quit_events():
+    pygame.quit()
+    sys.exit()
+    exit()
+
+
+
+def main():
+    pygame.init()
+    a,b = new_edge()
+    while True:
+        clock.tick(60) # envoi de l'image 
+        pygame.display.flip() # on attend pour ne pas depasser 60 images/seconde
+        display_colors(a[0],a[1])
+        get_events()
+
+main()
