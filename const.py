@@ -1,6 +1,9 @@
 import pygame
 #Constantes
 
+global BACKGROUND 
+BACKGROUND = (223,220,204)
+
 global GREEN 
 GREEN = (16,250,54)
 global ORANGE
@@ -34,6 +37,7 @@ edges = {
 edges_list = list(edges.items())
 
 #Pygame const
+pygame.init()
 
 # Taille de la fenetre
 global width,height,screen
@@ -43,3 +47,7 @@ pygame.display.set_caption("Blind Trainer")
 
 # Pour limiter le nombre d'images par seconde
 clock=pygame.time.Clock()
+
+#Police d'écriture
+small_font = pygame.font.SysFont(None,23)
+NOIR = (0,0,0)
