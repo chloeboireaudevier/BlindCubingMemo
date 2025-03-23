@@ -40,13 +40,10 @@ edges_list = list(edges.items())
 pygame.init()
 
 # Taille de la fenetre
-global width,height,screen
+global width,height
 width, height = 500,300
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Blind Trainer")
-
-# Pour limiter le nombre d'images par seconde
 clock=pygame.time.Clock()
+screen = pygame.display.set_mode((width, height))
 
 #Police d'écriture
 small_font = pygame.font.SysFont(None,23)
