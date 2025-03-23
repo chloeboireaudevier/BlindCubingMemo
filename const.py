@@ -1,5 +1,4 @@
 import pygame
-#Constantes
 
 global BACKGROUND 
 BACKGROUND = (223,220,204)
@@ -35,6 +34,19 @@ edges = {
 }
 
 edges_list = list(edges.items())
+
+corners = {
+    (WHITE,ORANGE,GREEN):'DFI',
+    (WHITE,ORANGE,BLUE):'AER',
+    (WHITE,GREEN,RED):'CJM',
+    (WHITE,RED,BLUE):'BNQ',
+    (YELLOW,GREEN,ORANGE):'ULG',
+    (YELLOW,GREEN,RED):'VKP',
+    (YELLOW,RED,BLUE):'WOT',
+    (YELLOW,ORANGE,BLUE):'XHS'
+}
+
+corners_list = list(corners.items())
 
 #Pygame const
 pygame.init()
