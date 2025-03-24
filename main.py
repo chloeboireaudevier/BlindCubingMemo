@@ -4,6 +4,8 @@ import pygame
 import pygame.freetype
 import sys
 
+#How to compress : https://pythonprogramming.net/converting-pygame-executable-cx_freeze/
+
 class Main:
 
     def __init__(self):
