@@ -26,7 +26,7 @@ edges = {
     (YELLOW,ORANGE):'XG',
     (YELLOW,GREEN):'UK',
     (YELLOW,RED):'VO',
-    (YELLOW,BLUE):'VS',
+    (YELLOW,BLUE):'WS',
     (ORANGE,BLUE):'HR',
     (ORANGE,GREEN):'FL',
     (GREEN,RED):'JP',
@@ -59,4 +59,5 @@ screen = pygame.display.set_mode((width, height))
 
 #Police d'écriture
 small_font = pygame.font.SysFont(None,23)
-NOIR = (0,0,0)
+global BLACK
+BLACK = (0,0,0)

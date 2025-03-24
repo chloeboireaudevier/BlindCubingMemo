@@ -26,7 +26,7 @@ edges = {
     (YELLOW,ORANGE):'XG',
     (YELLOW,GREEN):'UK',
     (YELLOW,RED):'VO',
-    (YELLOW,BLUE):'VS',
+    (YELLOW,BLUE):'WS',
     (ORANGE,BLUE):'HR',
     (ORANGE,GREEN):'FL',
     (GREEN,RED):'JP',
