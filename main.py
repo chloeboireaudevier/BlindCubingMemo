@@ -46,9 +46,9 @@ class Main:
         pygame.draw.rect(screen,  self.color2, rect2)
 
         if  self.show_letters:
-            lettre_1 = small_font.render( self.letters[0],True,NOIR)
+            lettre_1 = small_font.render( self.letters[0],True,BLACK)
             screen.blit(lettre_1,[width//3-lettre_1.get_rect().width//2,2*height//3])
-            lettre_2 = small_font.render( self.letters[1],True,NOIR)
+            lettre_2 = small_font.render( self.letters[1],True,BLACK)
             screen.blit(lettre_2,[2*width//3-lettre_2.get_rect().width//2,2*height//3])
 
     def display_corners_colors(self):
@@ -64,11 +64,11 @@ class Main:
         pygame.draw.rect(screen, self.color3, rect3)
 
         if self.show_letters:
-            lettre_1 = small_font.render( self.letters[0],True,NOIR)
+            lettre_1 = small_font.render( self.letters[0],True,BLACK)
             screen.blit(lettre_1,[width//4-lettre_1.get_rect().width//2,2*height//3])
-            lettre_2 = small_font.render( self.letters[1],True,NOIR)
+            lettre_2 = small_font.render( self.letters[1],True,BLACK)
             screen.blit(lettre_2,[2*width//4-lettre_2.get_rect().width//2,2*height//3])
-            lettre_3 = small_font.render( self.letters[2],True,NOIR)
+            lettre_3 = small_font.render( self.letters[2],True,BLACK)
             screen.blit(lettre_3,[3*width//4-lettre_3.get_rect().width//2,2*height//3])
 
     def get_events(self):
