@@ -1,4 +1,4 @@
-# BlindCubingMemo
+# BlindTrainer
 App to learn the name of the pieces for the Blind Method at Speedcubing
 
 -> Space to display the next configuration\
