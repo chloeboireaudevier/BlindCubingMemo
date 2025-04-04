@@ -6,6 +6,6 @@ If you want to create an executable file, you can follow [this tutorial](https:/
 \
 Commands :\
 -> Space to display the next configuration\
--> Enter to display the letters one by one\
+-> Enter to display the letters one by one
 
 Feel free to message me to suggest any improvements, or if you find any bugs :)
