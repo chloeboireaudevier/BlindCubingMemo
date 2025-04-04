@@ -13,7 +13,7 @@ class Main:
         self.color2 = None
         self.color3 = None
         self.letters = None
-        self.show_letters = False
+        self.show_letters = 0
         self.type = None
         pygame.init()
         self.clock=pygame.time.Clock()
@@ -48,9 +48,10 @@ class Main:
         rect2 = pygame.Rect(2*width//3-50,height//4,100,100)
         pygame.draw.rect(self.screen,  self.color2, rect2)
 
-        if  self.show_letters:
+        if self.show_letters >= 1:
             lettre_1 = self.small_font.render( self.letters[0],True,BLACK)
             self.screen.blit(lettre_1,[width//3-lettre_1.get_rect().width//2,2*height//3])
+        if self.show_letters >= 2:
             lettre_2 = self.small_font.render( self.letters[1],True,BLACK)
             self.screen.blit(lettre_2,[2*width//3-lettre_2.get_rect().width//2,2*height//3])
 
@@ -66,11 +67,13 @@ class Main:
         rect3 = pygame.Rect(3*width//4-50,height//4,100,100)
         pygame.draw.rect(self.screen, self.color3, rect3)
 
-        if self.show_letters:
+        if self.show_letters >= 1:
             lettre_1 = self.small_font.render( self.letters[0],True,BLACK)
             self.screen.blit(lettre_1,[width//4-lettre_1.get_rect().width//2,2*height//3])
+        if self.show_letters >= 2:
             lettre_2 = self.small_font.render( self.letters[1],True,BLACK)
             self.screen.blit(lettre_2,[2*width//4-lettre_2.get_rect().width//2,2*height//3])
+        if self.show_letters >= 3:
             lettre_3 = self.small_font.render( self.letters[2],True,BLACK)
             self.screen.blit(lettre_3,[3*width//4-lettre_3.get_rect().width//2,2*height//3])
 
@@ -89,7 +92,7 @@ class Main:
         exit()
 
     def next_color_event(self):
-        self.show_letters = False
+        self.show_letters = 0
         self.type = random.randint(0,1)
         tab_letters = []
         if self.type == 0:
@@ -113,7 +116,8 @@ class Main:
         self.letters = ''.join(tab_letters)
 
     def get_letters_event(self):
-        self.show_letters = True
+        if self.show_letters <3:
+            self.show_letters +=1
 
     def main(self):
         while True:
