@@ -19,6 +19,7 @@ class Main:
         self.clock=pygame.time.Clock()
         self.screen = pygame.display.set_mode((width, height))
         self.small_font = pygame.font.SysFont(None,23)
+        self.command_font = pygame.font.SysFont('lucidaconsole',12)
         pygame_icon = pygame.image.load('rubiks_icon.webp')
         pygame.display.set_icon(pygame_icon)
         pygame.display.set_caption("Blind Trainer")
@@ -54,6 +55,11 @@ class Main:
         if self.show_letters >= 2:
             lettre_2 = self.small_font.render( self.letters[1],True,BLACK)
             self.screen.blit(lettre_2,[2*width//3-lettre_2.get_rect().width//2,2*height//3])
+
+    def display_commands(self):
+        text = "Space to get to the next configuration, Enter to reveal the letters"
+        text = self.command_font.render(text,True,BLACK)
+        self.screen.blit(text,[width/2-text.get_rect().width//2,height - 1.5*text.get_rect().height])
 
     def display_corners_colors(self):
         self.screen.fill(BACKGROUND)
@@ -124,6 +130,7 @@ class Main:
             self.clock.tick(60)
             pygame.display.flip()
             self.display_colors()
+            self.display_commands()
             self.get_events()
 
 main = Main()
