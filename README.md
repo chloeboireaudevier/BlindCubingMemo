@@ -1,5 +1,5 @@
 # BlindTrainer
-App to learn the name of the pieces for the Blind Method at Speedcubing
+App to learn the name of the pieces for the Blind Category in Speedcubing
 
 -> Space to display the next configuration\
 -> Enter to display the letters one by one
