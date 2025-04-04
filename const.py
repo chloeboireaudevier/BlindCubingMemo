@@ -1,7 +1,10 @@
-import pygame
-
+#Background color
 global BACKGROUND 
 BACKGROUND = (223,220,204)
+
+#Colors
+global BLACK
+BLACK = (0,0,0)
 
 global GREEN 
 GREEN = (16,250,54)
@@ -48,16 +51,6 @@ corners = {
 
 corners_list = list(corners.items())
 
-#Pygame const
-pygame.init()
-
-# Taille de la fenetre
+#Window size
 global width,height
 width, height = 500,300
-clock=pygame.time.Clock()
-screen = pygame.display.set_mode((width, height))
-
-#Police d'écriture
-small_font = pygame.font.SysFont(None,23)
-global BLACK
-BLACK = (0,0,0)
