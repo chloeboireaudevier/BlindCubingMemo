@@ -34,61 +34,51 @@ class Main:
     
     def display_colors(self):
         if self.type == 0:
-            self.display_edge_colors()
+            space = 3
         else:
-            self.display_corners_colors()
+            space = 4
 
-    def display_edge_colors(self):
         self.screen.fill(BACKGROUND)
 
-        rect1 = pygame.Rect(width//3-50,height//4,100,100)
+        rect1 = pygame.Rect(width//space-50,height//4,100,100)
         pygame.draw.rect(self.screen, self.color1, rect1) 
 
-        rect2 = pygame.Rect(2*width//3-50,height//4,100,100)
+        rect2 = pygame.Rect(2*width//space-50,height//4,100,100)
         pygame.draw.rect(self.screen,  self.color2, rect2)
+        
+        if self.type == 1:
+            rect3 = pygame.Rect(3*width//space-50,height//4,100,100)
+            pygame.draw.rect(self.screen, self.color3, rect3)
+
+    def display_letters(self):
+        if self.type == 0:
+            space = 3
+        else:
+            space = 4
 
         if self.show_letters >= 1:
             lettre_1 = self.small_font.render( self.letters[0],True,BLACK)
-            self.screen.blit(lettre_1,[width//3-lettre_1.get_rect().width//2,2*height//3])
+            self.screen.blit(lettre_1,[width//space-lettre_1.get_rect().width//2,2*height//3])
         if self.show_letters >= 2:
             lettre_2 = self.small_font.render( self.letters[1],True,BLACK)
-            self.screen.blit(lettre_2,[2*width//3-lettre_2.get_rect().width//2,2*height//3])
+            self.screen.blit(lettre_2,[2*width//space-lettre_2.get_rect().width//2,2*height//3])
+        if self.type == 1 and self.show_letters >= 3:
+            lettre_3 = self.small_font.render( self.letters[2],True,BLACK)
+            self.screen.blit(lettre_3,[3*width//space-lettre_3.get_rect().width//2,2*height//3])
 
     def display_commands(self):
         text = "Space to get to the next configuration, Enter to reveal the letters"
         text = self.command_font.render(text,True,BLACK)
         self.screen.blit(text,[width/2-text.get_rect().width//2,height - 1.5*text.get_rect().height])
 
-    def display_corners_colors(self):
-        self.screen.fill(BACKGROUND)
-
-        rect1 = pygame.Rect(width//4-50,height//4,100,100)
-        pygame.draw.rect(self.screen, self.color1, rect1) 
-
-        rect2 = pygame.Rect(2*width//4-50,height//4,100,100)
-        pygame.draw.rect(self.screen, self.color2, rect2)
-
-        rect3 = pygame.Rect(3*width//4-50,height//4,100,100)
-        pygame.draw.rect(self.screen, self.color3, rect3)
-
-        if self.show_letters >= 1:
-            lettre_1 = self.small_font.render( self.letters[0],True,BLACK)
-            self.screen.blit(lettre_1,[width//4-lettre_1.get_rect().width//2,2*height//3])
-        if self.show_letters >= 2:
-            lettre_2 = self.small_font.render( self.letters[1],True,BLACK)
-            self.screen.blit(lettre_2,[2*width//4-lettre_2.get_rect().width//2,2*height//3])
-        if self.show_letters >= 3:
-            lettre_3 = self.small_font.render( self.letters[2],True,BLACK)
-            self.screen.blit(lettre_3,[3*width//4-lettre_3.get_rect().width//2,2*height//3])
-
     def get_events(self):
         for event in pygame.event.get():
-                if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE): 
-                    self.quit_event()
-                if event.type==pygame.KEYDOWN and event.key==pygame.K_SPACE:
-                    self.next_color_event()
-                if event.type == pygame.KEYDOWN and event.key==pygame.K_RETURN:
-                    self.get_letters_event()
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE): 
+                self.quit_event()
+            if event.type==pygame.KEYDOWN and event.key==pygame.K_SPACE:
+                self.next_color_event()
+            if event.type == pygame.KEYDOWN and event.key==pygame.K_RETURN:
+                self.get_letters_event()
 
     def quit_event(self):
         pygame.quit()
@@ -98,26 +88,26 @@ class Main:
     def next_color_event(self):
         self.show_letters = 0
         self.type = random.randint(0,1)
-        tab_letters = []
+        letters_ordered = []
+        
         if self.type == 0:
             color,letters = self.new_edge()
             order = [0,1]
-            random.shuffle(order)
-            self.color1 = color[order[0]]
-            tab_letters.append(letters[order[0]])
-            self.color2 = color[order[1]]
-            tab_letters.append(letters[order[1]])
         else:
             color,letters = self.new_corner()
             order = [0,1,2]
-            random.shuffle(order)
-            self.color1 = color[order[0]]
-            tab_letters.append(letters[order[0]])
-            self.color2 = color[order[1]]
-            tab_letters.append(letters[order[1]])
+            
+        random.shuffle(order)
+        self.color1 = color[order[0]]
+        letters_ordered.append(letters[order[0]])
+        self.color2 = color[order[1]]
+        letters_ordered.append(letters[order[1]])
+
+        if self.type == 1:
             self.color3 = color[order[2]]
-            tab_letters.append(letters[order[2]])
-        self.letters = ''.join(tab_letters)
+            letters_ordered.append(letters[order[2]])
+
+        self.letters = ''.join(letters_ordered)
 
     def get_letters_event(self):
         if self.show_letters <3:
@@ -128,6 +118,7 @@ class Main:
             self.clock.tick(60)
             pygame.display.flip()
             self.display_colors()
+            self.display_letters()
             self.display_commands()
             self.get_events()
 
